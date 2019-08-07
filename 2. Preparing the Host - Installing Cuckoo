@@ -1,0 +1,49 @@
+################################################
+~~ Create a User ~~
+$ sudo adduser cuckoo
+$ sudo usermod -a -G vboxusers cuckoo
+
+################################################
+~~ Raising file limits ~~
+$ sudo -i
+
+#You should now be in Root
+$ vi /etc/security/limits.conf
+
+#Scroll to the bottom using the down arrow. 
+#After #@student press enter to create space between #@student and # End of file
+#In that Space, Copy and Paste this:
+
+#*         hard    nofile      500000
+#*         soft    nofile      500000
+#root      hard    nofile      500000
+#root      soft    nofile      500000
+
+#Type :wq to save and exit
+
+#You can check that the file has been updated by looking at the text file starting at the very begining of the file chain:
+  etc folder
+     #security folder
+          #limits.conf
+#WHILE STILL IN ROOT
+
+$ vi /etc/pam.d/common-session
+
+#Add the following line (TO ADD LINE IN VI: type " i "
+# for more VI info, see here: https://alvinalexander.com/linux/vi-vim-editor-insert-line-mode
+
+#session required pam_limits.so
+
+^^
+
+Type "  :wq  : and press the enter button to exit
+
+EXIT ROOT: Exit root by simply pressing CTRL+D
+################################################
+~~ Installing Cuckoo ~~ ////////////////// START HERE!///////////
+
+$ virtualenv venv
+$ . venv/bin/activate
+(venv)$ pip install -U pip setuptools
+(venv)$ pip install -U cuckoo
+
