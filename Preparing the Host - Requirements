@@ -1,0 +1,98 @@
+#this is the lines I used for Cuckoo with Debian as HOST
+
+#The following software packages from the apt repositories are required to get Cuckoo to install and run properly:
+$ sudo apt-get install python python-pip python-dev libffi-dev libssl-dev
+$ sudo apt-get install python-virtualenv python-setuptools
+$ sudo apt-get install libjpeg-dev zlib1g-dev swig
+
+#In order to use the Django-based Web Interface, MongoDB is required:
+$ sudo apt-get install mongodb
+
+#In order to use PostgreSQL as database (our recommendation), PostgreSQL will have to be installed as well:
+$ sudo apt-get install postgresql libpq-dev
+
+################################################
+#PYDEEP
+#First install Ssdeep
+$ wget http://sourceforge.net/projects/ssdeep/files/ssdeep-2.13/ssdeep-2.13.tar.gz/download -O ssdeep-2.13.tar.gz
+$ tar -zxf ssdeep-2.13.tar.gz
+$ cd ssdeep-2.13
+$ ./configure
+$ make
+$ sudo make install
+$ cd #to exit the directory and go back
+$ ssdeep -V #to verify that it is installed. Should use as cyckoo@debian:~ $
+
+#Pydeep
+$pip install pydeep
+
+#Pydeep Verification
+$ pip show pydeep
+
+#Output of verification should look like this:
+Name: pydeep
+Version: 0.2
+Location: /usr/local/lib/python2.7/dist-packages
+Requires:
+
+################################################
+
+#Validate that Pydeep is installed:
+$ pip show pydeep
+
+#VirtualBox was already installed, so I skipped the VM install process
+
+#Instal tcpdump
+$ sudo apt-get install tcpdump
+
+
+
+#Tcpdump requires root privileges, but since you don’t want Cuckoo to run as root you’ll have to set specific Linux capabilities to the binary:
+$ sudo groupadd pcap
+$ sudo usermod -a -G pcap cuckoo
+$ sudo chgrp pcap /usr/sbin/tcpdump
+$ sudo setcap cap_net_raw,cap_net_admin=eip /usr/sbin/tcpdump
+
+#Make sure you have setcap:
+$ sudo apt-get install libcap2-bin
+
+#VERIFICATION CODE THEY GAVE DOES NOT WORK FOR ME. NO "GETCAP" COMMAND FOUND
+
+################################################
+~~Installing GIT~~
+$ sudo apt install git-all
+################################################
+~~Installing Volatility~~
+$ pip install openpyxl
+$ pip install ujson
+$ pip install pycrypto
+$ pip install distorm3
+$ pip install pytz
+
+#To install volatility type the following commands:
+$ git clone https://github.com/volatilityfoundation/volatility.git
+$ cd volatility
+$ python setup.py build
+$ sudo python setup.py install
+
+
+#Validate (DO NOT EXIT Volitility DIRECTORY)
+$ python vol.py -h
+
+################################################
+~~Installing M2Crypto~~
+$ sudo apt-get install swig
+$ sudo pip install m2crypto==0.24.0  # !!!! IF FAILURE USE "$ pip install m2crypto" !!! 
+#See failure notice above in line 85
+################################################
+~~Installing guacd~~
+$ sudo apt install libguac-client-rdp0 libguac-client-vnc0 libguac-client-ssh0 guacd
+
+################################################
+~~Installing VirtualBox Extension Pack~~
+#Note that the VirtualBox Extension Pack must also be installed to take advantage of the Cuckoo Control functionality exposed by Guacamole.
+#Cuckoo only works with Virtual Box Edtions UP TO 5.2
+$ cd /tmp
+$wget https://download.virtualbox.org/virtualbox/5.2.22/Oracle_VM_VirtualBox_Extension_Pack-5.2.22.vbox-extpack
+
+
