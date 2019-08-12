@@ -1,0 +1,24 @@
+Volitility Install:
+https://linoxide.com/linux-how-to/setup-volatility-memory-analysis/
+
+------------------------------------------------------------------------------------------------------
+Execute Python Files:
+1.save your file name as hey.py with the below given hello world script
+    #! /usr/bin/python
+    print('Hello, world!')
+2.open the terminal in that directory
+  $ python hey.py
+
+------------------------------------------------------------------------------------------------------
+Confirm Volititlity Install:
+  $ python vol.py -h
+
+------------------------------------------------------------------------------------------------------
+Install Yara:
+https://medium.com/@warunikaamali/cuckoo-sandbox-installation-guide-d7a09bd4ee1f
+
+------------------------------------------------------------------------------------------------------
+My Github Question about Ubuntu Guest Install:
+https://github.com/cuckoosandbox/cuckoo/issues/2819
+
+------------------------------------------------------------------------------------------------------
