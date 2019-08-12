@@ -30,3 +30,18 @@ sudo patch / usr / share / styetmtap / tapset / uconversions . stp < escape_deli
 $ sudo stap - p4 - r $ ( uname - r) strace . stp - m stap_ - v
 
 $ sudo stap -p4 -r $(uname -r) strace.stp -m stap_ -v
+
+$ sudo crontab -e
+@reboot python /path/to/agent.py
+
+$ sudo apt-get install systemtap gcc patch linux-headers-$(uname -r)
+
+//ERROR: no canditate
+
+Install Systemtap:
+A. From their wiki
+
+$ sudo apt-get install -y systemtap gcc
+
+
+
