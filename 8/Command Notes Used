@@ -1,0 +1,48 @@
+sudo rm -rf /home/cuckoo/volatility/
+
+/tmp/guac-build/
+
+sudo apt-get --purge remove volatility
+
+tar -xvf file.tar setup.py
+tar -xzvf file.tar.gz setup.py
+tar -xjvf file.tar.bz2 setup.py
+
+/home/cuckoo/volatility/setup.py
+
+sudo tar -xvf file.tar /home/cuckoo/volatility/setup.py
+tar -xzvf file.tar.gz /home/cuckoo/volatility/setup.py
+tar -xjvf file.tar.bz2 /home/cuckoo/volatility/setup.py
+
+sudo rm -rf /home/cuckoo/venv/lib/python2.7/site-packages/weasyprint/
+
+
+chmod u+rx setup.py
+
+
+pip install weasyprint
+
+sudo rm -rf /home/cuckoo/venv/lib/python2.7/site-packages/guacamole/
+
+/home/cuckoo/volatility/setup.py
+#!/home/cuckoo/volatility/setup.py
+
+sudo rm -rf /home/cuckoo/venv/lib/python2.7/site-packages/WeasyPrint-0.42.3.dist-info/
+
+pip install WeasyPrint==0.42.3
+
+
+/home/cuckoo/venv/lib/python2.7/site-packages/WeasyPrint-0.42.3.dist-info/
+
+
+Webserver Error: That port is already in use
+Fix: $ sudo fuser -k 8000/tcp
+
+TO ACTIVATE CUCKOO
+source /home/cuckoo/venv/bin/activate
+
+sudo /etc/init.d/guacd start
+
+sudo ~/venv/bin/cuckoo rooter
+
+cuckoo web runserver
