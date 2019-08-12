@@ -1,0 +1,33 @@
+Webserver Error: That port is already in use
+Fix: $ sudo fuser -k 8000/tcp
+
+TO ACTIVATE CUCKOO
+source /home/cuckoo/venv/bin/activate
+
+sudo /etc/init.d/guacd start
+
+sudo ~/venv/bin/cuckoo rooter
+
+cuckoo web runserver
+
+
+To install
+Weasly Print is for the PDFs. Last one to support Python 2.7 is version 0.42.3
+For more info: https://pypi.org/project/WeasyPrint/0.42.3/
+
+pip install WeasyPrint==0.42.3
+
+
+location of guac
+/home/cuckoo/venv/lib/python2.7/site-packages/guacamole/
+
+ /usr/local/lib/python2.7/dist-packages/cuckoo/web/analysis/urls.py.
+sudo apt-get purge guacamole
+
+sudo apt -y install libcairo2-dev libjpeg62-turbo-dev libpng-dev libossp-uuid-dev libfreerdp-dev
+
+
+wget https://www.apache.org/dist/guacamole/1.0.0/source/guacamole-server-1.0.0.tar.gz
+
+wget https://www.apache.org/dist/guacamole/1.0.0/source/guacamole-client-1.0.0.tar.gz
+tar xvf guacamole-client-1.0.0.tar.gz && cd guacamole-client-1.0.0
