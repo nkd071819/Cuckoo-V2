@@ -1,0 +1,32 @@
+After EOF
+
+$ sudo rm /var/lib/apt/lists/* -vf 
+$ sudo apt-get update
+
+
+Code:
+$ sudo apt-get install linux-image-$(uname -r)-dbgsym
+
+Error:
+# sudo apt-get upgrade
+E: Could not get lock /var/lib/dpkg/lock - open (11: Resource temporarily unavailable)
+E: Unable to lock the administration directory (/var/lib/dpkg/), is another process using it?
+
+Solution:
+
+$ sudo systemctl stop apt-daily.timer
+
+//After upgrading the system I suggest re-enabling it, as the bug locking it could be fixed with the upgrade.
+
+$ sudo systemctl start apt-daily.timer
+
+
+https://github.com/cuckoosandbox/cuckoo/blob/master/stuff/systemtap/expand_execve_envp.patch
+
+
+
+sudo patch / usr / share / styetmtap / tapset / uconversions . stp < escape_delimiters . patch
+
+$ sudo stap - p4 - r $ ( uname - r) strace . stp - m stap_ - v
+
+$ sudo stap -p4 -r $(uname -r) strace.stp -m stap_ -v
