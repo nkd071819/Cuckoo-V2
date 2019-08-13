@@ -1,0 +1,110 @@
+==== Installing YARA ====
+BEFORE INSTALLING:
+  YARA comes pre-packaged with the Cuckoo installation. If you are still having trouble, use the steps below to 
+  install the latest version of YARA into the Cuckoo Host. The commands below are for Linux, specifically Debian. 
+
+Notes:
+  - View Latest Version Here: https://github.com/virustotal/yara/releases/latest
+  - View Documentation Here: https://yara.readthedocs.io/en/v3.10.0/
+  - View GitHub Project Here: https://github.com/virustotal/yara
+  - View Main Website here: http://virustotal.github.io/yara/
+  - Make sure you have automake, libtool, make, and gcc in your Debian or Ubuntu System:
+        $ sudo apt-get install automake libtool make gcc
+
+-- Steps to install YARA --
+  Install dependecies:
+
+        $ sudo apt-get install libtool autoconf automake libssl-dev libjansson-dev libmagic-dev
+    
+  Install checkinstall to build a package (note, I have not tried this when installing Cuckoo):
+
+        $ sudo apt-get install checkinstall
+
+  Install YARA:
+
+        $ wget https://github.com/VirusTotal/yara/archive/v3.10.0.tar.gz -O yara-3.10.0.tar.gz
+    
+  Extract the tarball
+        $ tar -zxf yara-3.10.0.tar.gz
+    
+  Build, Complile and Install YARA with OpenSSL-dependent feautres enforced, the Cuckoo Module and the Magic Module
+        $ cd yara-3.10.0
+        $ ./bootstrap.sh
+        $ ./configure --with-crypto --enable-cuckoo --enable-magic
+        $ make
+                *** $sudo checkinstall *** instead of $sudo make install -> This will install YARA as a deb package, 
+                                                                            which will make it easier to remove or 
+                                                                            upgrade in the future.
+        $ sudo make install
+
+  Run the test cases to make sure that everything is fine (note, I have not tried this when installing Cuckoo):
+
+        $ make check
+
+  Once the new YARA package has been installed, install the YARA Python bindings:
+
+        $ cd yara-python
+        $ python setup.py build
+        $ sudo python setup.py install
+
+  Validate the installation:
+
+        $ pip show yara-python
+    
+        The Result of the command should look similar to this:
+            Name: yara-python
+            Version: 3.4.0
+            Location: /usr/local/lib/python2.7/dist-packages
+            Requires:
+    
+  YARA is now sucssesfully installed.    
+    
+
+-- YARA Install Commands without notes (excluding commands I did NOT use):
+
+    $ sudo apt-get install libtool autoconf automake libssl-dev libjansson-dev libmagic-dev
+    $ wget https://github.com/VirusTotal/yara/archive/v3.10.0.tar.gz -O yara-3.10.0.tar.gz
+    $ tar -zxf yara-3.10.0.tar.gz
+    $ cd yara-3.10.0
+    $ ./bootstrap.sh
+    $ ./configure --with-crypto --enable-cuckoo --enable-magic
+    $ make
+    $ sudo make install
+    $ cd yara-python
+    $ python setup.py build
+    $ sudo python setup.py install
+    $ pip show yara-python
+          The Result of the command should look similar to this:
+              Name: yara-python
+              Version: 3.4.0
+              Location: /usr/local/lib/python2.7/dist-packages
+              Requires:
+    
+  YARA is now sucssesfully installed.   
+
+-- YARA Install Commands without notes (INCLUDING commands I did NOT use) --
+    $ sudo apt-get install libtool autoconf automake libssl-dev libjansson-dev libmagic-dev
+    $ sudo apt-get install checkinstall
+    $ wget https://github.com/VirusTotal/yara/archive/v3.10.0.tar.gz -O yara-3.10.0.tar.gz
+    $ tar -zxf yara-3.10.0.tar.gz
+    $ cd yara-3.10.0
+    $ ./bootstrap.sh
+    $ ./configure --with-crypto --enable-cuckoo --enable-magic
+    $ make
+    $sudo checkinstall
+    $ make check
+    $ cd yara-python
+    $ python setup.py build
+    $ sudo python setup.py install
+    $ pip show yara-python
+          The Result of the command should look similar to this:
+              Name: yara-python
+              Version: 3.4.0
+              Location: /usr/local/lib/python2.7/dist-packages
+              Requires:
+              
+  YARA is now sucssesfully installed.   
+  
+-- Good References to use for YARA installation --
+  https://infosecspeakeasy.org/t/howto-install-and-use-yara/28
+  https://medium.com/@warunikaamali/cuckoo-sandbox-installation-guide-d7a09bd4ee1f
