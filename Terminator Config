@@ -3,36 +3,8 @@
 [profiles]
   [[default]]
     cursor_color = "#aaaaaa"
-  [[Cuckoo Terminal]]
-    cursor_color = "#aaaaaa"
-    copy_on_selection = True
 [layouts]
   [[default]]
-    [[[window0]]]
-      type = Window
-      parent = ""
-    [[[child1]]]
-      type = Terminal
-      parent = window0
-      profile = default
-  [[Cuckoo]]
-    [[[child0]]]
-      type = Window
-      parent = ""
-      order = 0
-      position = 0:0
-      maximised = False
-      fullscreen = False
-      size = 1920, 1017
-      title = cuckoo@debian: ~
-      last_active_term = ddafc854-2454-443f-912f-3fff57b90ff3
-      last_active_window = False
-    [[[terminal1]]]
-      type = Terminal
-      parent = child0
-      order = 0
-      profile = default
-      uuid = ddafc854-2454-443f-912f-3fff57b90ff3
     [[[child2]]]
       type = Window
       parent = ""
